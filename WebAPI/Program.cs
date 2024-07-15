@@ -1,16 +1,19 @@
 using System;
 
-public class Program
+namespace WebAPI
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-        .ConfigurationWebHostDefaults(webBuilder =>
+        public static void Main(string[] args)
         {
-            webBuilder.UseStartup<Startup>();
-        });
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigurationWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+    }
 }
