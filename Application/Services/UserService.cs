@@ -1,23 +1,28 @@
 using System;
+using Core.Interfaces;
+using Application.DTOs;
 
 namespace Application.Services
 {
-    private readonly IUserRepository _userRepository;
-
-    public class UserService(IUserRepository userRepository)
+    public class UserService
     {
-        _userRepository = userRepository;
-    }
+        private readonly IUserRepository _userRepository;
 
-    public async Task<UserDto> GetUserByIdAsync(int userId)
-    {
-        var user = await _userRepository.GetUserByIdAsync(userId);
-        return new UserDto
+        public UserService(IUserRepository userRepository)
         {
-            UserId = user.UserId,
-            Name = user.Name,
-            Email = user.Email,
-            Role = user.Role
-        };
+            _userRepository = userRepository;
+        }
+
+        public async Task<UserDTOs> GetUserByIdAsync(int userId)
+        {
+            var user = await _userRepository.GetUserByIdAsync(userId);
+            return new UserDTOs
+            {
+                UserId = user.UserId,
+                Name = user.Name,
+                Email = user.Email,
+                Role = user.Role
+            };
+        }   
     }
 }
