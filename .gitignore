@@ -77,3 +77,4 @@ secrets.json
 # Temporary files
 *.tmp
 /.vs
+/WebAPI/appsettings.json
