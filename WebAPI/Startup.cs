@@ -1,26 +1,25 @@
-using System;
-using Application.Services;
 using Infrastructure.Data;
+using Core.Interfaces;
+using Application.Services;
 
 namespace WebAPI
 {
     public class Startup
     {
-        public Startup(IConfigureServices configuration)
+        public IConfiguration Configuration { get;  }
+
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ParkingLotContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<UserService>();
+
             services.AddControllers();
-            services.AddSwaggeGen();
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,7 +30,7 @@ namespace WebAPI
             }
             else
             {
-                    app.UseExceptionHandle("/Error");
+                    app.UseExceptionHandler("/Error");
                     app.UseHsts();
             }
 
