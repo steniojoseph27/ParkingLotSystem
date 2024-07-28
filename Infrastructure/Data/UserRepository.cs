@@ -33,7 +33,7 @@ namespace Infrastructure.Data
 
         public async Task UpdateUserAsync(User user)
         {
-            _context.Entry(user).State = EntitySate.Modified;
+            _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 

@@ -13,10 +13,10 @@ namespace Application.Services
             _userRepository = userRepository;
         }
 
-        public async Task<UserDTOs> GetUserByIdAsync(int userId)
+        public async Task<UserDto> GetUserByIdAsync(int userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
-            return new UserDTOs
+            return new UserDto
             {
                 UserId = user.UserId,
                 Name = user.Name,
