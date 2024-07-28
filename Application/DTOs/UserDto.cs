@@ -2,7 +2,7 @@ using System;
 
 namespace Application.DTOs
 {
-    public class UserDTOs
+    public class UserDto
     {
         public int UserId { get; set; }
         public string Name { get; set; }
