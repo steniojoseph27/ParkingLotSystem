@@ -1,3 +1,5 @@
+using Core.Entities;
+using Core.Interfaces;
 using System;
 
 namespace Core.Repository
